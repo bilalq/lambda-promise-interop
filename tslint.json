@@ -1,0 +1,44 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended"
+  ],
+  "jsRules": {},
+  "rules": {
+    "arrow-parens": [true, "ban-single-arg-parens"],
+    "await-promise": true,
+    "completed-docs": [true, {
+      "classes": { "properties": { "privacies": ["public", "protected"]}},
+      "enums": true,
+      "functions": true,
+      "tags": true,
+      "methods": true
+    }],
+    "import-spacing": true,
+    "interface-name": false,
+    "max-line-length": [true, 150],
+    "member-ordering": false,
+    "newline-before-return": false,
+    "no-any": true,
+    "no-boolean-literal-compare": true,
+    "no-dynamic-delete": true,
+    "no-empty-interface": true,
+    "no-default-export": true,
+    "no-floating-promises": true,
+    "no-inferrable-types": true,
+    "no-null-keyword": true,
+    "no-parameter-reassignment": true,
+    "no-redundant-jsdoc": true,
+    "no-unnecessary-class": ["allow-empty-class", "allow-constructor-only"],
+    "no-unused-variable": true,
+    "prefer-readonly": true,
+    "quotemark": [true, "single", "avoid-escape", "avoid-template"],
+    "semicolon": [true, "never"],
+    "strict-boolean-expressions": [true, "allow-null-union", "allow-undefined-union", "allow-mix"],
+    "trailing-comma": [true, {"multiline": "never", "singleline": "never", "esSpecCompliant": true }],
+    "triple-equals": [true, "allow-null-check"],
+    "type-literal-delimiter": false,
+    "typedef": false
+  },
+  "rulesDirectory": []
+}
