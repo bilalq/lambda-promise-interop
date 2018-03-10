@@ -1,0 +1,66 @@
+{
+  "name": "lambda-promise-interop",
+  "version": "1.0.0",
+  "description": "Small JavaScript/TypeScript library for converting between AWS Lambda Handlers and (Event, Context) => Promise<Result> functions.",
+  "main": "index.js",
+  "scripts": {
+    "prebuild": "rm -rf build",
+    "build": "tsc",
+    "lint": "tslint --project . --format stylish",
+    "pretest": "tsc --noEmit --pretty && npm run lint",
+    "test": "jest",
+    "gitcheck": "git diff-index --quiet HEAD --",
+    "copystatic": "cp package.json .npmignore LICENSE README.md build/",
+    "predist": "npm run gitcheck && npm run test && npm run build && npm run copystatic",
+    "dist": "cd build && npm publish",
+    "prepublishOnly": "[[ \"$PWD\" =~ build ]]"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bilalq/lambda-promise-interop.git"
+  },
+  "keywords": [
+    "aws",
+    "lambda",
+    "promise",
+    "async",
+    "await",
+    "typescript"
+  ],
+  "author": "Bilal Quadri",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bilalq/lambda-promise-interop/issues"
+  },
+  "homepage": "https://github.com/bilalq/lambda-promise-interop#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/aws-lambda": "0.0.33",
+    "@types/jest": "^22.2.0",
+    "jest": "^22.4.2",
+    "ts-jest": "^22.4.1",
+    "tslint": "^5.9.1",
+    "typescript": "^2.7.2"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.ts"
+    ],
+    "coverageDirectory": "build/coverage",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ],
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "testPathIgnorePatterns": [
+      "/node_modules|build/"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    }
+  }
+}
