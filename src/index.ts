@@ -15,13 +15,13 @@ export function handlerifyAsyncFn<E, R>(fn: (event: E, context: Context) => Prom
 
 /**
  * Transforms lambda handler functions into functions that take in an event
- * object E and return a promise of type R.
+ * input object E and return a promise of type R.
  *
- * This is useful for unit-testing of traditionally written lambda functions,
- * as it makes it much easier to just write tests using async/await syntax.
+ * This is useful for unit-testing of traditionally written lambda handlers, as
+ * it makes it much easier to just write tests using async/await syntax.
  */
-export function promisifyLambdaHandler<E, R>(handler: Handler<E, R>): ((event: E) => Promise<R>) {
-  return (event: E) => new Promise((resolve, reject) => {
-    handler(event, {} as Context, (err, res?: R) => err ? reject(err) : resolve(res))
+export function promisifyHandler<E, R>(handler: Handler<E, R>): ((event: E, context: Context) => Promise<R>) {
+  return (event: E, context: Context) => new Promise((resolve, reject) => {
+    handler(event, context, (err, res?) => err ? reject(err) : resolve(res))
   })
 }
