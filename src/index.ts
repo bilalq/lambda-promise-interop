@@ -7,7 +7,7 @@ import { Callback, Context, Handler } from 'aws-lambda'
  * This lets you write a simple function signature that is easily testable and
  * fits neatly with the async/await model.
  */
-export function lambdaHandlerifyAsyncFunction<E, R>(fn: (event: E, context: Context) => Promise<R>): Handler<E, R> {
+export function handlerifyAsyncFn<E, R>(fn: (event: E, context: Context) => Promise<R>): Handler<E, R> {
   return (event: E, context: Context, callback: Callback<R>) => {
     fn(event, context).then(res => callback(undefined, res)).catch(callback)
   }
