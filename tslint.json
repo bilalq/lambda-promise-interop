@@ -38,7 +38,8 @@
     "trailing-comma": [true, {"multiline": "never", "singleline": "never", "esSpecCompliant": true }],
     "triple-equals": [true, "allow-null-check"],
     "type-literal-delimiter": false,
-    "typedef": false
+    "typedef": false,
+    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"]
   },
   "rulesDirectory": []
 }
